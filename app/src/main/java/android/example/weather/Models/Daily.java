@@ -1,0 +1,124 @@
+package android.example.weather.Models;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+public class Daily {
+    private Date dt;
+    private Date sunrise;
+    private Date sunset;
+    private Temp temp;
+    private Feels_like feels_like;
+    private float pressure;
+    private float humidity;
+    private float dew_point;
+    private float wind_speed;
+    private float wind_deg;
+    ArrayList<Weather> weather = new ArrayList<>();
+    private float clouds;
+    private float uvi;
+
+    public Date getDt() {
+        return dt;
+    }
+
+    public void setDt(Date dt) {
+        this.dt = dt;
+    }
+
+    public Date getSunrise() {
+        return sunrise;
+    }
+
+    public void setSunrise(Date sunrise) {
+        this.sunrise = sunrise;
+    }
+
+    public Date getSunset() {
+        return sunset;
+    }
+
+    public void setSunset(Date sunset) {
+        this.sunset = sunset;
+    }
+
+    public Temp getTemp() {
+        return temp;
+    }
+
+    public void setTemp(Temp temp) {
+        this.temp = temp;
+    }
+
+    public Feels_like getFeels_like() {
+        return feels_like;
+    }
+
+    public void setFeels_like(Feels_like feels_like) {
+        this.feels_like = feels_like;
+    }
+
+    public float getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(float pressure) {
+        this.pressure = pressure;
+    }
+
+    public float getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(float humidity) {
+        this.humidity = humidity;
+    }
+
+    public float getDew_point() {
+        return dew_point;
+    }
+
+    public void setDew_point(float dew_point) {
+        this.dew_point = dew_point;
+    }
+
+    public float getWind_speed() {
+        return wind_speed;
+    }
+
+    public void setWind_speed(float wind_speed) {
+        this.wind_speed = wind_speed;
+    }
+
+    public float getWind_deg() {
+        return wind_deg;
+    }
+
+    public void setWind_deg(float wind_deg) {
+        this.wind_deg = wind_deg;
+    }
+
+    public ArrayList<Weather> getWeather() {
+        return weather;
+    }
+
+    public void setWeather(ArrayList<Weather> weather) {
+        this.weather = weather;
+    }
+
+    public float getClouds() {
+        return clouds;
+    }
+
+    public void setClouds(float clouds) {
+        this.clouds = clouds;
+    }
+
+    public float getUvi() {
+        return uvi;
+    }
+
+    public void setUvi(float uvi) {
+        this.uvi = uvi;
+    }
+}
