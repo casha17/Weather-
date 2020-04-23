@@ -8,8 +8,8 @@ public class Temp {
     private float eve;
     private float morn;
 
-    public float getDay() {
-        return day;
+    public int getDay() {
+        return Math.round(day);
     }
 
     public void setDay(float day) {
@@ -33,7 +33,7 @@ public class Temp {
     }
 
     public float getNight() {
-        return night;
+        return Math.round(night);
     }
 
     public void setNight(float night) {

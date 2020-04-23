@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             String location = params[0];
-            String weatherRequestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=60.99&lon=30.9&appid=410463b3935acea56c8171825dbb4440";
+            String weatherRequestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=60.99&lon=30.9&units=metric&appid=410463b3935acea56c8171825dbb4440";
 
             URL url = null;
             try {
