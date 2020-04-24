@@ -1,6 +1,7 @@
 package android.example.weather;
 
 import android.content.Context;
+import android.example.weather.Models.Daily;
 import android.example.weather.Models.Weather;
 import android.example.weather.Models.WeatherData;
 import android.graphics.Color;
@@ -17,14 +18,18 @@ import com.squareup.picasso.Picasso;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private WeatherData mDataset;
+    final private AdapterOnClickHandler ClickHandler;
 
 
+    public interface AdapterOnClickHandler {
+        void onClick(Daily dailyData);
+    }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public TextView textViewDayTemp;
         public TextView textViewNightTemp;
-
+        public Daily DailyData;
         public ImageView imageView;
 
         public ViewHolder(View view) {
@@ -34,16 +39,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             imageView = (ImageView) view.findViewById(R.id.image);
             textViewNightTemp = (TextView) view.findViewById(R.id.textViewNightTemp);
 
+            view.setOnClickListener(this);
+
         }
 
         void bind(int listIndex) {
             textViewDayTemp.setText(String.valueOf(listIndex));
         }
+        @Override
+        public void onClick(View v) {
+            int adapterPosition = getAdapterPosition();
+            ClickHandler.onClick(DailyData);
+        }
     }
 
 
-    public Adapter(WeatherData myDataset) {
+    public Adapter(WeatherData myDataset , AdapterOnClickHandler clickHandler ) {
         mDataset = myDataset;
+        this.ClickHandler = clickHandler;
     }
 
     public void Clear() {
@@ -77,6 +90,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.textViewDayTemp.setText(String.valueOf(this.mDataset.getDaily().get(position).getTemp().getDay()) + " C") ;
         holder.textViewNightTemp.setText(String.valueOf(this.mDataset.getDaily().get(position).getTemp().getNight()) + " C") ;
         holder.textViewNightTemp.setTextColor(Color.GRAY);
+        holder.DailyData = this.mDataset.getDaily().get(position);
         String icon = this.mDataset.getDaily().get(position).getWeather().get(0).getIcon();
         String iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
         Picasso.get().load(iconUrl).into(holder.imageView);
