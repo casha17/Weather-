@@ -1,9 +1,8 @@
-package android.example.weather;
+package android.bachelor.weather;
 
 import android.content.Context;
-import android.example.weather.Models.Daily;
-import android.example.weather.Models.Weather;
-import android.example.weather.Models.WeatherData;
+import android.bachelor.weather.Models.Daily;
+import android.bachelor.weather.Models.WeatherData;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,9 +66,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         this.mDataset = data;
     }
 
-
-
-
     @Override
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
@@ -92,12 +88,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.textViewNightTemp.setTextColor(Color.GRAY);
         holder.DailyData = this.mDataset.getDaily().get(position);
         String icon = this.mDataset.getDaily().get(position).getWeather().get(0).getIcon();
-        String iconUrl = "http://openweathermap.org/img/w/" + icon + ".png";
+        String iconUrl = "https://openweathermap.org/img/w/" + icon + ".png";
         Picasso.get().load(iconUrl).into(holder.imageView);
-
-
-
-
     }
 
 
@@ -106,8 +98,4 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public int getItemCount() {
         return mDataset.getDaily().size();
     }
-
-
-
-
 }

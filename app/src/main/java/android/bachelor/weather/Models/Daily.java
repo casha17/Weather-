@@ -1,4 +1,4 @@
-package android.example.weather.Models;
+package android.bachelor.weather.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

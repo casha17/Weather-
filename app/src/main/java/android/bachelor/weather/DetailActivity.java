@@ -1,7 +1,7 @@
-package android.example.weather;
+package android.bachelor.weather;
 
 import android.content.Intent;
-import android.example.weather.Models.Daily;
+import android.bachelor.weather.Models.Daily;
 import android.os.Bundle;
 import android.widget.TextView;
 

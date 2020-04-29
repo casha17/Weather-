@@ -1,4 +1,4 @@
-package android.example.weather.Models;
+package android.bachelor.weather.Models;
 
 public class Weather {
     private int id;

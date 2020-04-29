@@ -1,4 +1,4 @@
-package android.example.weather;
+package android.bachelor.weather;
 
 import android.net.Uri;
 import android.util.Log;

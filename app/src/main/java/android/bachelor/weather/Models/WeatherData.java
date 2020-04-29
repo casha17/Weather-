@@ -1,8 +1,14 @@
-package android.example.weather.Models;
+package android.bachelor.weather.Models;
+
+import android.bachelor.weather.Models.GoogleModels.Item;
 
 import java.util.ArrayList;
 
 public class WeatherData {
+
+    private Item placeImage = null;
+    private String placeName = "";
+
     private float lat;
     private float lon;
     private String timezone;
@@ -10,6 +16,22 @@ public class WeatherData {
     ArrayList< Hourly > hourly = new ArrayList < Hourly > ();
     ArrayList < Daily > daily = new ArrayList < Daily > ();
     // Getter Methods
+
+    public Item getPlaceImage() {
+        return placeImage;
+    }
+
+    public void setPlaceImage(Item placeImage) {
+        this.placeImage = placeImage;
+    }
+
+    public String getPlaceName() {
+        return placeName;
+    }
+
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
+    }
 
     public float getLat() {
         return lat;

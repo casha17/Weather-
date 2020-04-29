@@ -1,4 +1,4 @@
-package android.example.weather.Models;
+package android.bachelor.weather.Models;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
