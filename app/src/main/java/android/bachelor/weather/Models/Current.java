@@ -1,10 +1,11 @@
 package android.bachelor.weather.Models;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Current {
+public class Current implements Serializable {
     private Date dt;
     private Date sunrise;
     private Date sunset;

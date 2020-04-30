@@ -3,10 +3,11 @@ package android.bachelor.weather.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Daily implements Parcelable {
+public class Daily implements Serializable {
     private Date dt;
     private Date sunrise;
     private Date sunset;
@@ -20,12 +21,6 @@ public class Daily implements Parcelable {
     ArrayList<Weather> weather = new ArrayList<>();
     private float clouds;
     private float uvi;
-
-
-    private Daily(Parcel in) {
-        this.humidity = in.readFloat();
-    }
-
 
     public Date getDt() {
         return dt;
@@ -130,24 +125,4 @@ public class Daily implements Parcelable {
     public void setUvi(float uvi) {
         this.uvi = uvi;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeFloat(this.humidity);
-    }
-
-    public static final Parcelable.Creator<Daily> CREATOR = new Parcelable.Creator<Daily>() {
-        public Daily createFromParcel(Parcel in) {
-            return new Daily(in);
-        }
-
-        public Daily[] newArray(int size) {
-            return new Daily[size];
-        }
-    };
 }

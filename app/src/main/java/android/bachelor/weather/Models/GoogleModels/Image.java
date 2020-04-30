@@ -1,6 +1,8 @@
 package android.bachelor.weather.Models.GoogleModels;
 
-public class Image {
+import java.io.Serializable;
+
+public class Image implements Serializable {
     private String contextLink;
     private long height;
     private long width;

@@ -1,10 +1,13 @@
 package android.bachelor.weather.Models;
 
 import android.bachelor.weather.Models.GoogleModels.Item;
+import android.os.Parcel;
+import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class WeatherData {
+public class WeatherData implements Serializable {
 
     private Item placeImage = null;
     private String placeName = "";

@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
     private static final int REQUEST_LOCATION = 123;
     private double longitude = -73.935242;//9.394911;
     private double latitude = 40.730610;//56.428888;
+    private Boolean isLoading = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
         adapter.AddData(weatherData);
         adapter.notifyDataSetChanged();
 
-        frag.setData(weatherData.getPlaceImage(), weatherData.getPlaceName(), weatherData.getCurrent().getTemp());
+        frag.setData(weatherData.getPlaceImage(), weatherData.getPlaceName(), String.valueOf((int)weatherData.getCurrent().getTemp()), weatherData.getDaily().get(0).getWeather().get(0).getDescription());
     }
 
     @Override
@@ -136,9 +137,10 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
     }
 
     @Override
-    public void onClick(Daily dailyData) {
+    public void onClick(Daily dailyData, WeatherData metadata) {
         Intent detailIntent = new Intent(MainActivity.this, DetailActivity.class);
         detailIntent.putExtra("DAILY" , dailyData);
+        detailIntent.putExtra("META", metadata);
         startActivity(detailIntent);
     }
 

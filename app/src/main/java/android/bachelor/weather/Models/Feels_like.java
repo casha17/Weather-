@@ -1,6 +1,8 @@
 package android.bachelor.weather.Models;
 
-public class Feels_like {
+import java.io.Serializable;
+
+public class Feels_like implements Serializable {
     private float day;
     private float night;
     private float eve;

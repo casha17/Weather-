@@ -1,6 +1,8 @@
 package android.bachelor.weather.Models;
 
-public class Temp {
+import java.io.Serializable;
+
+public class Temp implements Serializable {
     private float day;
     private float min;
     private float max;

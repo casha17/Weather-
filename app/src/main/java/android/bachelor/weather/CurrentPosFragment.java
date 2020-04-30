@@ -30,14 +30,16 @@ public class CurrentPosFragment extends Fragment {
         return inflater.inflate(R.layout.currentposfragmentlayout, container, false);
     }
 
-    public void setData(Item placeImage, String placeName, double temp) {
+    public void setData(Item placeImage, String placeName, String temp, String cityDescrption) {
         System.out.println();
         final FrameLayout frame = (FrameLayout)getView().findViewById(R.id.currentPosFrame);
         final TextView cityName = (TextView)getView().findViewById(R.id.frameCityName);
         final TextView citeTemp = (TextView)getView().findViewById(R.id.frameCityTemp);
+        final TextView cityDescription = (TextView)getView().findViewById(R.id.headerDescription);
 
         cityName.setText(placeName);
-        citeTemp.setText(""+(int)temp+"\u00B0");
+        citeTemp.setText(""+temp+"\u00B0");
+        cityDescription.setText(cityDescrption.substring(0,1).toUpperCase() + cityDescrption.substring(1));
 
         final ImageView image = new ImageView(getContext());
         Picasso.get().load(placeImage.getLink()).into(image, new Callback() {

@@ -1,6 +1,8 @@
 package android.bachelor.weather.Models.GoogleModels;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
     private String kind;
     private String title;
     private String htmlTitle;

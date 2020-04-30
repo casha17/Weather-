@@ -1,9 +1,10 @@
 package android.bachelor.weather.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Hourly {
+public class Hourly implements Serializable {
     private Date dt;
     private float temp;
     private float feels_like;
