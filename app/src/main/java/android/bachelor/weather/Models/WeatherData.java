@@ -20,6 +20,8 @@ public class WeatherData implements Serializable {
     ArrayList < Daily > daily = new ArrayList < Daily > ();
     // Getter Methods
 
+
+
     public Item getPlaceImage() {
         return placeImage;
     }

@@ -1,5 +1,6 @@
 package android.bachelor.weather;
 
+import android.bachelor.weather.Models.Weather;
 import android.content.Context;
 import android.bachelor.weather.Models.Daily;
 import android.bachelor.weather.Models.WeatherData;
@@ -67,9 +68,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         this.mDataset = data;
     }
 
+    public WeatherData GetData() {
+        return this.mDataset;
+    }
+
     @Override
     public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
+
         Context context = parent.getContext();
         int layoutIdForListItem = R.layout.activity_textlayout;
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -82,8 +87,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
+
         String day = new SimpleDateFormat("EEEE").format(this.mDataset.getDaily().get(position).getDt());
         day = day.substring(0,1).toUpperCase() + day.substring(1);
         if(position == 0) {
