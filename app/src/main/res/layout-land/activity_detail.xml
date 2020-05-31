@@ -40,6 +40,7 @@
             android:id="@+id/horizontaldetails"
             android:layout_width="200dp"
             android:layout_height="120dp"
+            android:layout_marginLeft="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
@@ -73,6 +74,7 @@
             android:name="android.bachelor.weather.SupplementaryCurrentPosFragment"
             android:layout_width="410dp"
             android:layout_height="197dp"
+            android:layout_marginRight="10dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
