@@ -8,7 +8,7 @@
     <FrameLayout
         android:id="@+id/currentPosFrame"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:alpha="0.7"
         android:background="#333333"
         android:foreground="@drawable/default_image_placeholder"
@@ -17,17 +17,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <TextView
         android:id="@+id/frameCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginRight="500dp"
         android:textColor="#2C2C2C"
         android:textSize="36sp"
         app:drawableTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
     <TextView
         android:id="@+id/frameCityTemp"
@@ -36,7 +41,7 @@
         android:layout_marginBottom="80dp"
         android:textColor="#2C2C2C"
         android:textSize="44sp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="400dp"
         app:layout_constraintBottom_toBottomOf="@+id/currentPosFrame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/frameCityName"
@@ -45,10 +50,11 @@
     <TextView
         android:id="@+id/headerDescription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="500dp"
         android:textColor="#2C2C2C"
         android:textSize="30sp"
-        android:layout_marginRight="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameCityName" />
