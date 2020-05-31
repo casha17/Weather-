@@ -61,7 +61,6 @@ public class FetchData extends AsyncTask<String , Void , WeatherData> {
 
             String[] stringSplit = data.getTimezone().split("/");
             String placeName = stringSplit[1].replace("_", " ");
-
             // Positional image query
             String imageQuery = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAzxkChBc2XJCady5tuKYj2jQhaxeOhaBY&cx=007790874964585735542:gmugdrnk524&q="+placeName+"+view&searchType=image";
             String imageQueryResult = NetworkUtils.getResponseFromHttpUrl(new URL(imageQuery));
@@ -91,7 +90,9 @@ public class FetchData extends AsyncTask<String , Void , WeatherData> {
     @Override
     protected void onPostExecute(WeatherData weatherData) {
         System.out.println(weatherData);
-        this.callbackListener.callback(weatherData);
+        if(this.callbackListener != null) {
+            this.callbackListener.callback(weatherData);
+        }
     }
 
 

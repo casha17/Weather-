@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/GridLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/textViewUV"
+            android:layout_width="136dp"
+            android:layout_height="57dp"
+            android:drawableLeft="@drawable/sunlight" />
+
+        <TextView
+            android:id="@+id/textViewHumidity"
+            android:layout_width="136dp"
+            android:layout_height="57dp"
+            android:drawableLeft="@drawable/humidity"/>
+
+        <TextView
+            android:id="@+id/textViewPressure"
+            android:layout_width="136dp"
+            android:layout_height="57dp"
+            android:drawableLeft="@drawable/pressure" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/textViewWind"
+            android:layout_width="136dp"
+            android:layout_height="57dp"
+            android:drawableLeft="@drawable/wind" />
+
+        <TextView
+            android:id="@+id/textViewSunrise"
+            android:layout_width="136dp"
+            android:layout_height="57dp"
+            android:drawableLeft="@drawable/sunrise" />
+
+
+        <TextView
+            android:id="@+id/textViewSunset"
+            android:layout_width="136dp"
+            android:layout_height="57dp"
+            android:drawableLeft="@drawable/sunset" />
+    </LinearLayout>
+</LinearLayout>

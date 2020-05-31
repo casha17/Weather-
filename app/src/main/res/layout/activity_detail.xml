@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -59,5 +58,16 @@
         app:layout_constraintTop_toBottomOf="@+id/fragment">
 
     </FrameLayout>
+
+    <fragment
+        android:id="@+id/fragment_supplementary"
+        android:name="android.bachelor.weather.SupplementaryCurrentPosFragment"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontaldetails"
+        tools:layout="@layout/fragment_currentpos_supplementary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

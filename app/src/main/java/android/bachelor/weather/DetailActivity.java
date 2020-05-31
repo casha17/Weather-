@@ -5,6 +5,7 @@ import android.bachelor.weather.Models.WeatherData;
 import android.content.Intent;
 import android.bachelor.weather.Models.Daily;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class DetailActivity extends AppCompatActivity {
     private Daily daily;
     private WeatherData metadata;
     private CurrentPosFragment frag;
+    private SupplementaryCurrentPosFragment suppFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,22 @@ public class DetailActivity extends AppCompatActivity {
         Intent in  = getIntent();
         daily = (Daily) in.getSerializableExtra("DAILY");
         metadata = (WeatherData) in.getSerializableExtra("META");
+        Log.d("DAILY", ("Clouds: " + daily.getClouds()));
+        Log.d("DAILY", "Feels like :" + daily.getFeels_like());
+        Log.d("DAILY", "Humidity: " + daily.getHumidity());
+        Log.d("DAILY", "Pressure: " + daily.getPressure());
+        Log.d("DAILY", "Sunrise: " + daily.getSunrise());
+        Log.d("DAILY", "Sunset: " + daily.getSunset());
+        Log.d("DAILY", "Uvi: " + daily.getUvi());
+        Log.d("DAILY", "Wind deg: " + daily.getWind_deg());
+        Log.d("DAILY", "Wind speed: " + daily.getWind_speed());
+
 
         String day = new SimpleDateFormat("EEEE").format(daily.getDt());
         day = day.substring(0,1).toUpperCase() + day.substring(1);
         this.frag.setData(metadata.getPlaceImage(), day, (int)daily.getTemp().getDay()+"\u00B0/"+(int)daily.getTemp().getNight() , daily.getWeather().get(0).getDescription());
-
+        this.suppFrag.setData(daily.getHumidity(), daily.getPressure(), daily.getSunrise(),  daily.getSunset(), daily.getUvi(), daily.getWind_speed());
+        
         ArrayList<Hourly> hourData = new ArrayList<>();
         // Check if there is any hourly data to display
         for(int i = 0; i < metadata.getHourly().size(); i++) {
@@ -83,6 +96,9 @@ public class DetailActivity extends AppCompatActivity {
     public void onAttachFragment(Fragment fragment) {
         if(fragment instanceof CurrentPosFragment) {
             this.frag = (CurrentPosFragment)fragment;
+        }
+        if(fragment instanceof SupplementaryCurrentPosFragment){
+            this.suppFrag = (SupplementaryCurrentPosFragment)fragment;
         }
     }
 }

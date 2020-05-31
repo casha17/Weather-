@@ -125,8 +125,9 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
         adapter.Clear();
         adapter.AddData(weatherData);
         adapter.notifyDataSetChanged();
-
-        frag.setData(weatherData.getPlaceImage(), weatherData.getPlaceName(), String.valueOf((int)weatherData.getCurrent().getTemp()), weatherData.getDaily().get(0).getWeather().get(0).getDescription());
+        if(frag != null) {
+            frag.setData(weatherData.getPlaceImage(), weatherData.getPlaceName(), String.valueOf((int) weatherData.getCurrent().getTemp()), weatherData.getDaily().get(0).getWeather().get(0).getDescription());
+        }
     }
 
     @Override
