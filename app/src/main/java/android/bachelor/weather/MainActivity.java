@@ -14,7 +14,6 @@ import android.bachelor.weather.Data.FetchData;
 import android.bachelor.weather.Models.Daily;
 import android.bachelor.weather.Models.WeatherData;
 import android.content.pm.PackageManager;
-
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -80,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
             WeatherData savedData = (WeatherData) savedInstanceState.getSerializable("weather");
             this.weatherData = savedData;
             adapter = new Adapter(savedData, this);
+            frag.setData(savedData.getPlaceImage(), savedData.getPlaceName(), String.valueOf((int)savedData.getCurrent().getTemp()), savedData.getDaily().get(0).getWeather().get(0).getDescription());
         }
         recyclerView.setAdapter(adapter);
 
