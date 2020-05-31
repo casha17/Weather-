@@ -5,17 +5,20 @@ import android.bachelor.weather.ICallbackListener;
 import android.bachelor.weather.Models.DateTypeAdapter;
 import android.bachelor.weather.Models.GoogleModels.ImageSearch;
 import android.bachelor.weather.Models.GoogleModels.Item;
-import android.bachelor.weather.Models.GoogleModels.SearchInformation;
 import android.bachelor.weather.Models.WeatherData;
-import android.bachelor.weather.NetworkUtils;
+
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
+import java.util.Scanner;
 
 public class FetchData extends AsyncTask<String , Void , WeatherData> {
 
@@ -41,7 +44,7 @@ public class FetchData extends AsyncTask<String , Void , WeatherData> {
     @Override
     protected WeatherData doInBackground(String... params) {
 
-        /* If there's no zip code, there's nothing to look up. */
+
 
         String location = params[0];
         String weatherRequestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + this._latitude + "&lon="+this._longitude+"&units=metric&appid=410463b3935acea56c8171825dbb4440";
@@ -53,8 +56,7 @@ public class FetchData extends AsyncTask<String , Void , WeatherData> {
             e.printStackTrace();
         }
         try {
-            String jsonWeatherResponse = NetworkUtils
-                    .getResponseFromHttpUrl(url);
+            String jsonWeatherResponse = getResponseFromHttpUrl(url);
             System.out.println(jsonWeatherResponse);
             Gson gson = new GsonBuilder().registerTypeAdapter(Date.class , new DateTypeAdapter()).create();
             WeatherData data = gson.fromJson(jsonWeatherResponse , WeatherData.class);
@@ -64,7 +66,7 @@ public class FetchData extends AsyncTask<String , Void , WeatherData> {
 
             // Positional image query
             String imageQuery = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAzxkChBc2XJCady5tuKYj2jQhaxeOhaBY&cx=007790874964585735542:gmugdrnk524&q="+placeName+"+view&searchType=image";
-            String imageQueryResult = NetworkUtils.getResponseFromHttpUrl(new URL(imageQuery));
+            String imageQueryResult = getResponseFromHttpUrl(new URL(imageQuery));
             ImageSearch googleResult = gson.fromJson(imageQueryResult, ImageSearch.class);
 
             Item bestMatch = null;
@@ -92,6 +94,26 @@ public class FetchData extends AsyncTask<String , Void , WeatherData> {
     protected void onPostExecute(WeatherData weatherData) {
         System.out.println(weatherData);
         this.callbackListener.callback(weatherData);
+    }
+
+
+    public String getResponseFromHttpUrl(URL url) throws IOException {
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        try {
+            InputStream in = urlConnection.getInputStream();
+
+            Scanner scanner = new Scanner(in);
+            scanner.useDelimiter("\\A");
+
+            boolean hasInput = scanner.hasNext();
+            if (hasInput) {
+                return scanner.next();
+            } else {
+                return null;
+            }
+        } finally {
+            urlConnection.disconnect();
+        }
     }
 
 

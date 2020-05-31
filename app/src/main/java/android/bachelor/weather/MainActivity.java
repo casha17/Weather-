@@ -14,27 +14,21 @@ import android.bachelor.weather.Data.FetchData;
 import android.bachelor.weather.Models.Daily;
 import android.bachelor.weather.Models.WeatherData;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Criteria;
-import android.location.Geocoder;
+
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
-
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.PlaceLikelihood;
-import com.google.android.libraries.places.api.net.PlacesClient;
-
 import java.util.List;
+
 
 
 public class MainActivity extends AppCompatActivity implements ICallbackListener , Adapter.AdapterOnClickHandler, LocationListener {
 
     private RecyclerView recyclerView;
     private Adapter adapter;
+    private WeatherData weatherData;
     private CurrentPosFragment frag;
     private Boolean isGpsEnabled = false;
     private static final int REQUEST_LOCATION = 123;
@@ -63,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
         // If gps is enabled get Location
         if(isGpsEnabled) {
             GetLocation();
+        }
+        if(savedInstanceState == null) {
+            System.out.println("NULL");
         }
 
         //  Getting recyclerview by ID from layout
@@ -111,9 +108,12 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
             }
             lm.removeUpdates(this);
 
-            FetchData fetchData = new FetchData(longitude, latitude);
-            fetchData.setCallbackListener(this);
-            fetchData.execute("");
+            if(this.weatherData == null) {
+                FetchData fetchData = new FetchData(longitude, latitude);
+                fetchData.setCallbackListener(this);
+                fetchData.execute("");
+            }
+
 
         } catch (SecurityException ex) {
             ex.printStackTrace();
@@ -168,5 +168,26 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
     public void onPointerCaptureChanged(boolean hasCapture) {
         System.out.println("");
     }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putSerializable("weather", this.adapter.GetData());
+    }
+
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+         weatherData = (WeatherData) savedInstanceState.getSerializable("weather");
+        // where mMyCurrentPosition should be a public value in your activity.
+        if(this.weatherData == null) {
+            if(weatherData != null) {
+                this.weatherData = weatherData;
+            }
+        }
+    }
+
 }
 
