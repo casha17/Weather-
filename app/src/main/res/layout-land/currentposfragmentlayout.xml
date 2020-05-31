@@ -18,45 +18,42 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <TextView
         android:id="@+id/frameCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginRight="500dp"
+
         android:textColor="#2C2C2C"
         android:textSize="36sp"
         app:drawableTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/frameCityTemp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/frameCityTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_marginTop="32dp"
         android:textColor="#2C2C2C"
         android:textSize="44sp"
-        android:layout_marginLeft="400dp"
-        app:layout_constraintBottom_toBottomOf="@+id/currentPosFrame"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/frameCityName"
-        app:layout_constraintTop_toBottomOf="@id/headerDescription" />
+        app:layout_constraintEnd_toStartOf="@+id/headerDescription"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/frameCityName"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/headerDescription"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="100dp"
-        android:layout_marginRight="500dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:textColor="#2C2C2C"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameCityName" />
+        app:layout_constraintEnd_toEndOf="@+id/currentPosFrame"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/frameCityTemp"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
