@@ -54,13 +54,10 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
             isGpsEnabled = true;
         }
 
+
         // If gps is enabled get Location
-        if(isGpsEnabled) {
-            GetLocation();
-        }
-        if(savedInstanceState == null) {
-            System.out.println("NULL");
-        }
+
+
 
         //  Getting recyclerview by ID from layout
         recyclerView = (RecyclerView) findViewById(R.id.rv_main);
@@ -73,8 +70,23 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
 
         // Set empty data to avoid crash
         WeatherData data = new WeatherData();
-        adapter = new Adapter(data, this);
+
+
+        if(savedInstanceState == null) {
+            System.out.println("NULL");
+            adapter = new Adapter(data, this);
+        }else {
+            System.out.println(savedInstanceState);
+            WeatherData savedData = (WeatherData) savedInstanceState.getSerializable("weather");
+            this.weatherData = savedData;
+            adapter = new Adapter(savedData, this);
+        }
         recyclerView.setAdapter(adapter);
+
+
+        if(isGpsEnabled) {
+            GetLocation();
+        }
     }
 
     @Override
@@ -173,7 +185,8 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putSerializable("weather", this.adapter.GetData());
+        WeatherData data = this.adapter.GetData();
+        savedInstanceState.putSerializable("weather", data);
     }
 
 
@@ -182,11 +195,7 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
         super.onRestoreInstanceState(savedInstanceState);
          weatherData = (WeatherData) savedInstanceState.getSerializable("weather");
         // where mMyCurrentPosition should be a public value in your activity.
-        if(this.weatherData == null) {
-            if(weatherData != null) {
-                this.weatherData = weatherData;
-            }
-        }
+
     }
 
 }
