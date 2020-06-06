@@ -47,7 +47,7 @@ public class FetchData extends AsyncTask<String , Void , WeatherData> {
 
 
         String location = params[0];
-        String weatherRequestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + this._latitude + "&lon="+this._longitude+"&units=metric&appid=410463b3935acea56c8171825dbb4440";
+        String weatherRequestUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + this._latitude + "&lon="+this._longitude+"&units=metric&appid=89b2f51bb862ed73dae5f89afa16ab6b";
 
         URL url = null;
         try {
