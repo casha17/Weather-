@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
         }
 
 
-        // If gps is enabled get Location
 
 
 
-        //  Getting recyclerview by ID from layout
+
+
         recyclerView = (RecyclerView) findViewById(R.id.rv_main);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
 
         recyclerView.setHasFixedSize(true);
 
-        // Set empty data to avoid crash
+
         WeatherData data = new WeatherData();
 
 
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements ICallbackListener
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
          weatherData = (WeatherData) savedInstanceState.getSerializable("weather");
-        // where mMyCurrentPosition should be a public value in your activity.
+
 
     }
 
